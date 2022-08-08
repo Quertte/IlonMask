@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-
 function getCandidates() {
   const fileName = 'crew.txt';
   const filePath = path.resolve(__dirname, fileName);
@@ -54,23 +53,23 @@ function getRightDoc() {
 }
 
 function getAllEngineer() {
-  return getCandidates().filter(elem => elem.includes('Бортмеханик'));
+  return getCandidates().filter((elem) => elem.includes('Бортмеханик'));
 }
 
 function getAllRover() {
-  return getEquipments().filter(elem => elem.includes('марсоход'));
+  return getEquipments().filter((elem) => elem.includes('марсоход'));
 }
 
 function getRightRovers() {
-  const result = getEquipments().filter(elem => elem.includes('марсоход'));
-  const arr = result.filter(elem => +elem.slice(-1) > 3);
+  const result = getEquipments().filter((elem) => elem.includes('марсоход'));
+  const arr = result.filter((elem) => +elem.slice(-1) > 3);
   return arr;
 }
 
 function getRightRocket() {
   const array = getRockets();
   const arr = [];
-  array.forEach(elem => {
+  array.forEach((elem) => {
     const timeArr = elem.split(', ');
     const obj = {
       speed: timeArr.at(-1),
@@ -82,8 +81,6 @@ function getRightRocket() {
   arr[0].data[2] = +arr[0].data[2];
   return arr[0].data;
 }
-
-console.log(getRightRocket());
 
 module.exports = {
   getRightCaptain,
